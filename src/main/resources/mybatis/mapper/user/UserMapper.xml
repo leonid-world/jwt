@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    [템플릿 설명]
+    - 해당 파일은 SQL 문을 작성하는 곳입니다.
+-->
+<mapper namespace="com.cos.jwt.mapper.UserMapper">
+
+    <insert id="insertUser">
+        insert into users
+            (
+                username,
+                password,
+                roles
+            )
+        values
+            (
+                #{username},
+                #{password},
+                #{roles}
+            );
+    </insert>
+
+    <select id="selectByUsername" resultType="com.cos.jwt.model.User">
+        SELECT username as username,
+               password as password,
+               roles as roles
+        FROM
+            users
+        where
+            username = #{username}
+    </select>
+
+</mapper>
